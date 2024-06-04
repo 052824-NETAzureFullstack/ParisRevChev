@@ -26,9 +26,13 @@ import { HousingService } from '../housing.service';
 export class HomeComponent {
 
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+    //this.housingLocationList = this.housingService.getAllHousingLocations();
+    this.housingLocationList = housingLocationList;
     this.filteredLocationList = this.housingLocationList;
-  }
+  });
+}
+
 
   housingLocationList: HousingLocation[] = []
   filteredLocationList: HousingLocation[] = [];
